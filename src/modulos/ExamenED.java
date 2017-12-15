@@ -9,43 +9,43 @@ public class ExamenED {
 
     public static void main(String args[]){
 
-        System.out.println("INTRODUCE UN NUMERO: ");
+        System.out.println("INTRODUCE UN NUMERO PARA DAR TAMAÑO AL ARRAY: ");
         Scanner input = new Scanner(System.in);
-        int m = input.nextInt();
+        int tamañoArray = input.nextInt();
         Random random = new Random();
-        int []a = new int[m];
-        for(int in=0; in<m; in++)
+        int []numerosAleatorios = new int[tamañoArray];
+        for(int posicionArray=0; posicionArray<tamañoArray; posicionArray++)
         {
-            a[in] = random.nextInt(ExamenED.w);
+            numerosAleatorios[posicionArray] = random.nextInt(ExamenED.w);//Rellena los espacios del array con numeros aleatorios
         }
 
-        ExamenED.ejecutarAlgoritmo(a);
+        ExamenED.esPar(numerosAleatorios);
         input.close();
     }
 
 
-    public static void ejecutarAlgoritmo(int[] a){
+    public static void esPar(int[] numerosAleatorios){
 
-        int x = 0;
-        int y = ExamenED.w;
+        int max = 0;
+        int min = ExamenED.w;
 
-        for(int in=0; in<a.length; in++)
+        for(int in=0; in<numerosAleatorios.length; in++)
         {
-            System.out.println(a[in]);
-            if(a[in] > x ){
-                x = a[in];
+            System.out.println(numerosAleatorios[in]);
+            if(numerosAleatorios[in] > max ){
+                max = numerosAleatorios[in];
             }
 
-            if(a[in] < y){
-                y = a[in];
+            if(numerosAleatorios[in] < min){
+                min = numerosAleatorios[in];
             }
         }
 
-        int z = y *x;
+        int z = min *max;
         if (z == 0 || (z % 2 != 0)  ){
-            System.out.println("NO ES");
+            System.out.println("NO ES PAR");
         }else{
-            System.out.println("ES");
+            System.out.println("ES PAR");
         }
 
     }
